@@ -3,12 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "start": "serve -s dist -l $PORT"
+},
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "@types/three": "^0.181.0",
