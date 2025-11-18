@@ -10,5 +10,10 @@ export default defineConfig({
   ],
   css: {
     transformer: 'postcss'   // disables LightningCSS
+  },
+   preview: {
+    allowedHosts: ['theyearyouwin.up.railway.app'],
+    port: parseInt(process.env.PORT) || 4173,
+    host: true
   }
 })
