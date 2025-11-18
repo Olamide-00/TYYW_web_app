@@ -14,7 +14,7 @@ const Layout = () => {
       {/* Main content with proper spacing */}
       <div className="relative z-10 min-h-screen pt-16"> {/* Added pt-16 for navbar spacing */}
         <div className="container mx-auto px-4 py-8">
-          <div className="backdrop-blur-sm bg-black/20 rounded-2xl p-6 md:p-8 border border-pink-500/20">
+        <div className=" bg-black/30 rounded-2xl p-6 md:p-8 border border-pink-500/20">
             <Outlet />
           </div>
         </div>

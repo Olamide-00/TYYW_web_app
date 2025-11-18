@@ -8,7 +8,7 @@ const Home = () => {
         </div>
         
         <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-pink-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
-          THE YEAR<br className="hidden md:block" />YOU WIN
+          THE YEAR<br className="hidden md:block" />  YOU WIN
         </h1>
         
         <p className="text-lg md:text-3xl lg:text-4xl mb-6 md:mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed font-light">
