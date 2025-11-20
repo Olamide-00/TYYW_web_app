@@ -7,10 +7,10 @@ const Navbar = () => {
   const location = useLocation()
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Book', href: '/book', icon: BookOpen },
-    { name: 'Community', href: '/community', icon: Users },
+    // { name: 'Home', href: '/' },
+    // { name: 'About', href: '/about' },
+    // { name: 'Book', href: '/book', icon: BookOpen },
+    // { name: 'Community', href: '/community', icon: Users },
   ]
 
   const toggleMenu = () => setIsOpen(!isOpen)
@@ -56,9 +56,9 @@ const Navbar = () => {
               })}
               
               {/* Pre-order Button */}
-              <button className="ml-4 px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-pink-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 border border-pink-500/30">
+              {/* <button className="ml-4 px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-pink-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 border border-pink-500/30">
                 Pre-order Now
-              </button>
+              </button> */}
             </div>
           </div>
 
