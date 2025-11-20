@@ -53,7 +53,9 @@ const Home = () => {
           <div className="relative group">
             {/* Main Book */}
             <div className="w-64 h-80 bg-gradient-to-br from-pink-600/40 to-purple-700/40 border-2 border-pink-500/60 rounded-xl shadow-2xl transform rotate-2 group-hover:rotate-0 transition-all duration-500 flex flex-col items-center justify-center p-6">
-              <div className="text-4xl mb-4">📚</div>
+              <div className="text-4xl mb-4">
+                <img src="./9.png" alt="Logo"  style={{ width: 150, height: 'auto' }}  />
+              </div>
               <h3 className="text-xl font-bold text-white text-center mb-2">THE YEAR YOU WIN</h3>
               <p className="text-pink-300 text-sm text-center">Your Guide to Actual Achievement</p>
               <div className="mt-4 flex gap-1">
@@ -64,7 +66,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        
         <div>
           <h2 className="text-2xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
             Why This Works When Others Fail
@@ -72,7 +73,7 @@ const Home = () => {
           
           <div className="space-y-4 mb-6">
             {[
-              "7-Step system proven with 10,000+ people",
+              "7-Step system proven with 100+ people",
               "No fluff - just actionable strategies",
               "Works for any goal in any area of life",
               "Instant digital access + community",
@@ -115,12 +116,16 @@ const Home = () => {
             </h2>
             <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">Certified Writter</h3>
             <p className="text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
-              After transforming her own life from chronic procrastinator to consistent achiever, 
-              Priscilla has spent 2 years helping hundreds break through their goal-setting barriers.
+              About the Author
+‎
+‎Ibitoye Priscilla Damilola is a storyteller and purpose-driven writer from Kogi State, Nigeria. She holds a degree in Mass Communication and is currently serving as a corps member.
+‎Professionally, she works as a ghostwriter and copywriter, helping individuals and brands communicate their stories with clarity and impact.
+‎She is the author of The Dignified Lady and the founder of Dignified Ladies Foundation, a growing community where ladies are equipped to live with poise, dignity, and self-worth.
+‎Through her writing and initiatives, Priscilla continues to inspire others to pursue growth, live intentionally, and win with purpose.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-lg md:text-xl font-bold text-pink-400">5+</div>
+                <div className="text-lg md:text-xl font-bold text-pink-400">2+</div>
                 <div className="text-xs text-gray-400">Years Experience</div>
               </div>
               <div className="text-center">
@@ -180,7 +185,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex gap-1 mb-3 text-yellow-400">
-                {"⭐".repeat(5)}
+                {"⭐".repeat(4)}
               </div>
               <p className="text-gray-300 italic text-sm">"{review.comment}"</p>
             </div>
@@ -190,7 +195,7 @@ const Home = () => {
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-black/40 rounded-2xl px-6 py-3 border border-pink-500/20">
             <div className="flex gap-1 text-yellow-400">
-              {"⭐".repeat(5)}
+              {"⭐".repeat(4)}
             </div>
             <span className="text-white font-semibold text-sm">4.9/5 from 2,347+ readers</span>
           </div>
@@ -205,7 +210,7 @@ const Home = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {[
-            { icon: "📖", title: "300+ Page E-book", desc: "Complete system with exercises" },
+            { icon: "📖", title: "100+ Page E-book", desc: "Complete system with exercises" },
             { icon: "🎧", title: "Audiobook Version", desc: "Listen on the go" },
             { icon: "📊", title: "Worksheets", desc: "Printable progress trackers" },
             { icon: "👥", title: "Community Access", desc: "Private WhatsApp group" },
