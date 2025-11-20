@@ -103,11 +103,11 @@ const Navbar = () => {
               })}
               
               {/* Mobile Pre-order Button */}
-              <div className="px-3 py-2">
+              {/* <div className="px-3 py-2">
                 <button className="w-full px-4 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-semibold rounded-full hover:from-pink-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 border border-pink-500/30">
                   Pre-order Book
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
