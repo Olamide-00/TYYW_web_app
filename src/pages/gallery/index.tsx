@@ -63,7 +63,7 @@ const Gallery = () => {
           Vickie's Gallery
         </h1>
         <p className="text-rose-200/80 text-lg max-w-2xl mx-auto">
-          A collection of beautiful moments featuring my amazing Vickie 💖
+          A collection of beautiful moments featuring you 💖
         </p>
       </div>
 
@@ -114,9 +114,7 @@ const Gallery = () => {
       <div className="max-w-6xl mx-auto mt-12 text-center">
         <div className="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 rounded-full px-6 py-3">
           <Heart className="w-5 h-5 text-rose-400" fill="currentColor" />
-          <span className="text-rose-300">
-            {photos.length} Beautiful Photos of Vickie
-          </span>
+          <span className="text-rose-300"></span>
         </div>
       </div>
     </div>

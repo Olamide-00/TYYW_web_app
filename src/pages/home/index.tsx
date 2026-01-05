@@ -355,10 +355,10 @@ const Home = () => {
           <div className="text-center mb-8">
             <MessageCircleHeart className="w-12 h-12 mx-auto mb-4 text-rose-300" />
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              What People Say About Vickie
+              What People Say About you
             </h2>
             <p className="text-rose-200/80">
-              Beautiful messages from people who love and admire you
+              Messages from people who love and admire you
             </p>
           </div>
 
