@@ -237,23 +237,17 @@ const Home = () => {
             </h3>
             <div className="flex justify-center space-x-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-300">
-                  {timeUntil.hours.toString().padStart(2, "0")}
-                </div>
+                <div className="text-3xl font-bold text-pink-300">0</div>
                 <div className="text-xs text-rose-300/70">Hours</div>
               </div>
               <div className="text-3xl text-rose-300">:</div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-rose-300">
-                  {timeUntil.minutes.toString().padStart(2, "0")}
-                </div>
+                <div className="text-3xl font-bold text-rose-300">0</div>
                 <div className="text-xs text-rose-300/70">Minutes</div>
               </div>
               <div className="text-3xl text-rose-300">:</div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-300">
-                  {timeUntil.seconds.toString().padStart(2, "0")}
-                </div>
+                <div className="text-3xl font-bold text-pink-300">0</div>
                 <div className="text-xs text-rose-300/70">Seconds</div>
               </div>
             </div>
