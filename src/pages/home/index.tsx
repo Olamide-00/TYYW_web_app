@@ -14,15 +14,14 @@ const Home = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [expandedReasons, setExpandedReasons] = useState({});
   const [showKisses, setShowKisses] = useState(false);
   const [loveMessages, setLoveMessages] = useState([
     {
       id: 1,
-      name: "Your Best Friend",
+      name: "Gabriel",
       message:
-        "Vickie, you light up every room you walk into! Happy birthday to the most amazing friend! 🎉",
+        "Our wife, happy birthday, Happy birthday to an amazing person 🎉, may your day be bright as your smile",
       time: "2 hours ago",
       emoji: "💖",
     },
@@ -35,9 +34,9 @@ const Home = () => {
     },
     {
       id: 3,
-      name: "Family",
+      name: "Damilola",
       message:
-        "Our dearest Victoria, you make us so proud every single day. Wishing you endless joy! 🎂",
+        "Happy birthday to you sister Victorial, you're amazing and nice, God will bless your new age",
       time: "6 hours ago",
       emoji: "👨‍👩‍👧",
     },
@@ -68,14 +67,6 @@ const Home = () => {
 
     calculateTime();
     const interval = setInterval(calculateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Auto-sliding carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 6); // 6 slides total
-    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -149,26 +140,69 @@ const Home = () => {
     if (!showKisses) return;
 
     const container = document.querySelector(".kisses-container");
-    for (let i = 0; i < 30; i++) {
+    if (!container) return;
+
+    // Clear any existing kisses
+    container.innerHTML = "";
+
+    for (let i = 0; i < 20; i++) {
       const kiss = document.createElement("div");
-      kiss.innerHTML = "💋";
-      kiss.className = "flying-kiss";
+      kiss.textContent = "💋";
+      kiss.style.position = "fixed";
+      kiss.style.pointerEvents = "none";
+      kiss.style.zIndex = "9999";
       kiss.style.left = `${Math.random() * 100}vw`;
-      kiss.style.animationDuration = `${1 + Math.random() * 2}s`;
+      kiss.style.top = "100vh";
       kiss.style.fontSize = `${20 + Math.random() * 30}px`;
       kiss.style.opacity = "0.8";
+      kiss.style.animation = `float ${1 + Math.random() * 2}s linear forwards`;
+
       container.appendChild(kiss);
 
+      // Remove after animation completes
       setTimeout(() => {
-        kiss.remove();
+        if (kiss.parentNode === container) {
+          container.removeChild(kiss);
+        }
       }, 3000);
     }
   }, [showKisses]);
 
   return (
     <div className="text-white space-y-16 md:space-y-24 pb-16">
+      {/* Add CSS styles for animations */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          @keyframes float {
+            0% {
+              transform: translateY(100vh) rotate(0deg);
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(-100vh) rotate(360deg);
+              opacity: 0;
+            }
+          }
+          
+          .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out;
+          }
+        `}
+      </style>
+
       {/* Flying kisses container */}
-      <div className="fixed inset-0 pointer-events-none kisses-container z-50"></div>
+      <div className="fixed inset-0 pointer-events-none kisses-container z-50" />
 
       {/* Hero Section - Birthday Celebration */}
       <section className="text-center px-4 pt-4">
@@ -204,21 +238,21 @@ const Home = () => {
             <div className="flex justify-center space-x-4">
               <div className="text-center">
                 <div className="text-3xl font-bold text-pink-300">
-                  {timeUntil.hours}
+                  {timeUntil.hours.toString().padStart(2, "0")}
                 </div>
                 <div className="text-xs text-rose-300/70">Hours</div>
               </div>
               <div className="text-3xl text-rose-300">:</div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-rose-300">
-                  {timeUntil.minutes}
+                  {timeUntil.minutes.toString().padStart(2, "0")}
                 </div>
                 <div className="text-xs text-rose-300/70">Minutes</div>
               </div>
               <div className="text-3xl text-rose-300">:</div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-pink-300">
-                  {timeUntil.seconds}
+                  {timeUntil.seconds.toString().padStart(2, "0")}
                 </div>
                 <div className="text-xs text-rose-300/70">Seconds</div>
               </div>
@@ -238,167 +272,79 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Photo Gallery Section with Carousel */}
+      {/* Single Photo Display - Simple Version */}
       <section className="px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
-              Beautiful Memories of Vickie
+              Adesewa
             </span>
           </h2>
           <p className="text-rose-200/80 max-w-2xl mx-auto">
-            A collection of beautiful moments featuring my amazing Vickie 💓
+            The woman who makes every day brighter 💓
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="max-w-4xl mx-auto relative">
-          {/* Main Carousel */}
-          <div className="relative h-64 md:h-96 overflow-hidden rounded-2xl border-2 border-rose-500/30">
-            {/* Slides */}
-            <div className="relative w-full h-full">
-              {/* Slide 1 - Main Photo */}
-              <div
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  currentSlide === 0 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <div className="w-full h-full bg-gradient-to-br from-rose-500/20 to-pink-500/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-4 rounded-full border-4 border-rose-500/40 shadow-2xl shadow-rose-500/30 overflow-hidden">
-                      <img
-                        src="./9.png"
-                        alt="Beautiful Vickie"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold text-white">
-                      My Beautiful Queen 👑
-                    </h3>
-                    <p className="text-rose-200/80">
-                      The woman who stole my heart forever
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Other Slides */}
-              {[1, 2, 3, 4, 5].map((slideIndex) => (
-                <div
-                  key={slideIndex}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    currentSlide === slideIndex ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="text-6xl md:text-8xl mb-4">
-                        {slideIndex === 1
-                          ? "💕"
-                          : slideIndex === 2
-                          ? "🌟"
-                          : slideIndex === 3
-                          ? "🎈"
-                          : slideIndex === 4
-                          ? "🎂"
-                          : "✨"}
+        {/* Single Photo Display */}
+        <div className="max-w-2xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl border-2 border-rose-500/30 bg-gradient-to-br from-rose-500/10 to-pink-500/10">
+            {/* Main Photo */}
+            <div className="aspect-square flex items-center justify-center p-4">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-rose-500/40 shadow-2xl shadow-rose-500/30 overflow-hidden">
+                <img
+                  src="/14.jpeg"
+                  alt="Beautiful Vickie"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = "none";
+                    // Create fallback
+                    const fallback = document.createElement("div");
+                    fallback.className =
+                      "w-full h-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center";
+                    fallback.innerHTML = `
+                      <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="none">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        </div>
+                        <p class="text-white text-lg font-semibold">Adesewa 💝</p>
                       </div>
-                      <h3 className="text-xl font-bold text-white">
-                        {slideIndex === 1
-                          ? "Beautiful Smile"
-                          : slideIndex === 2
-                          ? "Shining Bright"
-                          : slideIndex === 3
-                          ? "Birthday Joy"
-                          : slideIndex === 4
-                          ? "Celebration Time"
-                          : "Special Moment"}
-                      </h3>
-                      <p className="text-rose-200/80">
-                        {slideIndex === 1
-                          ? "That smile that lights up my world"
-                          : slideIndex === 2
-                          ? "Always glowing with happiness"
-                          : slideIndex === 3
-                          ? "Celebrating your special day"
-                          : slideIndex === 4
-                          ? "Making wonderful memories"
-                          : "Every moment with you is precious"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Carousel Indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {[0, 1, 2, 3, 4, 5].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentSlide === index
-                      ? "bg-rose-400 w-8"
-                      : "bg-rose-200/50 hover:bg-rose-300"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
+                    `;
+                    e.target.parentElement.appendChild(fallback);
+                  }}
                 />
-              ))}
+              </div>
             </div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={() => setCurrentSlide((prev) => (prev - 1 + 6) % 6)}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
-              aria-label="Previous slide"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => setCurrentSlide((prev) => (prev + 1) % 6)}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
-              aria-label="Next slide"
-            >
-              →
-            </button>
+            {/* Photo Caption */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+              <div className="text-white text-center">
+                <h3 className="text-xl md:text-2xl font-bold mb-2">
+                  My Beautiful Queen 👑
+                </h3>
+                <p className="text-rose-200/90">
+                  The woman who stole my heart forever
+                </p>
+              </div>
+            </div>
+
+            {/* Heart Badge */}
+            <div className="absolute top-4 right-4 bg-rose-500/90 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
+              <Heart className="w-4 h-4" fill="white" />
+              <span>Favorite</span>
+            </div>
           </div>
 
-          {/* Thumbnail Previews */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mt-4">
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`aspect-square rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                  currentSlide === index
-                    ? "border-rose-400 scale-105"
-                    : "border-rose-500/20 hover:border-rose-300"
-                }`}
-              >
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-500/10 to-pink-500/10">
-                  {index === 0 ? (
-                    <img
-                      src="./9.png"
-                      alt="Vickie"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-2xl">
-                      {index === 1
-                        ? "💕"
-                        : index === 2
-                        ? "🌟"
-                        : index === 3
-                        ? "🎈"
-                        : index === 4
-                        ? "🎂"
-                        : "✨"}
-                    </div>
-                  )}
-                </div>
-              </button>
-            ))}
+          {/* Simple Description */}
+          <div className="text-center mt-6">
+            <div className="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 rounded-full px-4 py-2">
+              <Camera className="w-4 h-4 text-rose-300" />
+              <span className="text-rose-300/80 text-sm">
+                Always beautiful, always amazing 💖
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -562,42 +508,6 @@ const Home = () => {
           </p>
         </div>
       </section>
-
-      {/* CSS for flying kisses */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes float {
-          0% {
-            transform: translateY(100vh) rotate(0deg);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-
-        .flying-kiss {
-          position: fixed;
-          pointer-events: none;
-          animation: float linear forwards;
-          z-index: 9999;
-        }
-      `}</style>
     </div>
   );
 };
